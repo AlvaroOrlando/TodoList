@@ -1,0 +1,15 @@
+.span {
+    background-image: url('../assets/hover=false.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #262626;
+    border: none;
+    width:24px;
+    height: 24px;
+    align-self: flex-start;
+}
+
+.span:hover{
+    background-color: #333333;
+    background: url('../assets/hover=true.png');
+}

@@ -1,0 +1,28 @@
+
+
+.taskCounter{
+    font-family:var(--inter);
+    font-style: normal;
+    font-weight: var(--bold);
+    line-height: 17px;
+    font-size: 14px;
+    color: var(--blue);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.taskCounter span{
+    color: var(--gray-100);
+    background-color: var(--gray-400);
+    height: 19px;
+    border-radius: 999px;
+    padding: 2px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    
+}
+

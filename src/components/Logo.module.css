@@ -1,0 +1,15 @@
+.logo{
+    display: flex;
+    gap: 12px;
+    width: 126px;
+    height: 48px;
+}
+
+.rocket{
+    align-self: flex-end;
+}
+
+.todo{
+    align-self:center;
+    margin-top: 5px;
+}
