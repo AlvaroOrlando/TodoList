@@ -2,7 +2,7 @@
   "name": "desafio-react-01",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://AvvaroOrlando.github.io/TodoList",
+  "homepage": "https://alvaroorlando.github.io/TodoList",
   "type": "module",
   "scripts": {
     "dev": "vite",
