@@ -1,12 +1,18 @@
 
 import styles from './List.module.css'
 
-export function List({onChange, content,checked}:any){
+interface ListProps {
+  id:string;
+  onChange: React.ChangeEventHandler;
+  content:string;
+  checked:boolean
+}
+
+export function List({onChange, content, checked}:ListProps){
 
     return (
-      <div className={styles.input_container}>
+      <>
         <input
-          id='input'
           className={styles.checkbox}
           type="checkbox"
           checked={checked}
@@ -17,6 +23,6 @@ export function List({onChange, content,checked}:any){
         >
           {content}
         </span>
-      </div>
+      </>
     )
 }

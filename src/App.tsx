@@ -4,11 +4,13 @@ import { List } from "./components/List";
 import { EmptyList } from "./components/EmptyList";
 import { TaskCounter } from "./components/TaskCounter";
 import { CreateButton } from "./components/CreateButton";
-import { useEffect, useState } from 'react'
+
+import { useState } from 'react'
 import { v4 as uuidV4 } from 'uuid'
 
 
 import'./global.css';
+import { TrashButton } from "./components/TrashButton";
 
 interface Task{
   id:string
@@ -20,9 +22,9 @@ export function App(){
 
 
   const [tasks, setTasks] = useState<Task[]>([])
-  const [newTaskText,setNewTaskText] = useState('')
+  const [newTaskText,setNewTaskText] = useState<string>('')
 
-  function handleCreateNewTask(e:any){
+  function handleCreateNewTask(e: React.FormEvent<HTMLFormElement>):void{
     const newTask = {
       id:uuidV4(),
       content:newTaskText,
@@ -34,7 +36,7 @@ export function App(){
    e.preventDefault()
   }
 
-  const handleOnChange = function(id:any){
+  const handleOnChange = function(id:string){
      tasks.map((task) => {
       if(id === task.id){
         task.done = !task.done
@@ -43,6 +45,13 @@ export function App(){
     setTasks(state => [...state])
   }
 
+  const deleteTask = function(id:string){
+    const taskListWithoutDeletedOne = tasks.filter(task =>{
+      return task.id !== id
+    })
+
+    setTasks(taskListWithoutDeletedOne)
+  }
  
   const completedTasks = tasks.filter(task => task.done === true).length
 
@@ -54,7 +63,7 @@ export function App(){
          onSubmit={handleCreateNewTask}
          className="inputContainer">
           <Input
-           onChange={(e => setNewTaskText(e.target.value))}
+           onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewTaskText(e.target.value)}
            value={newTaskText}
           />
           <CreateButton  />
@@ -68,13 +77,16 @@ export function App(){
             {
               tasks.map((task) => {
                 return (
-                  <List
-                    id={task.id}
-                    key = {task.id}
-                    content={task.content}
-                    onChange={() => handleOnChange(task.id)}
-                    checked={task.done}
-                  />
+                  <div className="input_container">
+                    <List
+                      id={task.id}
+                      key = {task.id}
+                      content={task.content}
+                      onChange={() => handleOnChange(task.id)}
+                      checked={task.done}
+                    />
+                    <TrashButton onClick={()=> deleteTask(task.id)} />
+                  </div>
                 )
               })
             }
