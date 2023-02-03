@@ -31,4 +31,5 @@ Este é um projeto front-end de uma Todo List que tem as seguintes funções:
 Stacks:
 
 . React.js
+. HTML
 . CSS
